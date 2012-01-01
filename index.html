@@ -1,0 +1,141 @@
+﻿<!DOCTYPE HTML> 
+<html> 
+<head> 
+<meta charset="UTF-8"> 
+<title>花密 --- 可记忆的密码管理方案</title>
+<link rel="stylesheet" href="1.css" />
+<script src="jquery.min.js"></script>
+<script src="md5.js"></script>
+<script type="text/javascript">
+function countCode(){
+	var password = $("#password").val();
+	var key = $("#key").val();
+	if(password && key){
+		var md5one = $.md5(password,key);
+		var md5two = $.md5(md5one,'snow');
+		var md5three = $.md5(md5one,'kise');
+		//计算大小写
+		var rule = md5three.split("");
+		var source = md5two.split("");
+		for(var i=0;i<=31;i++){ 
+			if(isNaN(source[i])){
+				str ="sunlovesnow1990090127xykab";
+				if(str.search(rule[i]) > -1){
+					source[i] = source[i].toUpperCase();
+				}
+			}
+		}
+		var code32 = source.join("");
+		var code1 = code32.slice(0,1);
+		if(isNaN(code1)){
+			var code16 = code32.slice(0,16);
+			}else{
+			var code16 = "K" + code32.slice(1,16);
+			}
+		$("#code16").text(code16);
+		$("#code32").text(code32);
+		$("#code6").text(password);
+	}
+}
+
+$(function(){//页面载入后执行的内容
+	$('a').attr("target","_blank");
+	//监视内容改变
+	$('#password').change(countCode);
+	$('#key').change(countCode);
+	$('#password').keyup(countCode);
+	$('#key').keyup(countCode);
+	//调整复制按钮位置
+	$(window).resize(function(){clip.reposition();});
+	//复制按钮的事件
+	clip.addEventListener( "mouseOver", function(client) {
+    client.setText( $("#code16").text() ); // 重新设置要复制的值
+	$('#copycode16').addClass("copycode16h");$('#code16').addClass("code16h");
+	});
+	clip.addEventListener( "mouseOut", function(client) {
+    $('#copycode16').removeClass("copycode16h");$('#code16').removeClass("code16h");
+	});
+	clip.addEventListener( "complete", function() {
+	$('#copyOK').fadeTo(0,0).css("border-color","#22B614").css("background-color","#22B614").fadeTo('normal',1).fadeTo(2000,1).fadeTo(3000,0);
+	});
+	//支持项目
+	$("#zc").click( function () { 
+	
+		$('#zhichi').slideToggle("slow"); 
+		$('body').animate({scrollTop: $('#footer').offset().top}, 1000);
+	});
+});
+
+</script>
+</head>
+<body>
+<div id="header">
+<h1>花密 Flower Password<span> --- 可记忆的密码管理方案</span></h1>
+</div>
+<div id="main">
+	<p>“花密”旨在提供一个可记忆、非储存的密码管理方案。使用一个记忆密码和各账号的区分代号通过基于HMAC-MD5的自定义算法为不同账号分别生成一个不同的强壮密码。 <a href="http://kisexu.com/blog/huami">>>介绍说明</a></p>
+	<p>“花密”其他版本：<a href="http://userscripts.org/scripts/show/121401" target="_blank">Greasemonkey脚本版</a>（推荐）| <a title="花密更新离线版本和自建的在线版" href="http://kisexu.com/blog/18" target="_blank">离线HTML版</a> | <a href="http://flower-password.googlecode.com/files/F.P.win%20v1.0.zip" target="_blank">桌面exe版</a> | <a title="花密推出chrome插件" href="http://kisexu.com/blog/20" target="_blank">chrome插件版</a></p>
+	<h2><span>1</span>输入</h2>
+	<div id="input">
+		<label for="password">记忆密码</label><input id="password" name="password" type="password" value="" tabindex="1" maxlength="20" />
+		<span>+</span>
+		<label for="key">区分代号</label><input id="key" name="key" type="text" value="" tabindex="2" maxlength="15" />
+		<p>· 记忆密码：可选择一个简单易记的密码，用于生成其他高强度密码。<br>· 区分代号：用于区别不同用途密码的简短代号，如淘宝账号可用“taobao”或“tb”等。</p>
+	</div>
+	<h2><span>2</span>获取</h2>
+	<div id="get">
+		<p id="tuijian">16位码（推荐）：<span id="code16" class="code16d">&nbsp;</span><span id="copycode16" class="copycode16d">点击复制</span><span id="copyOK">&radic; 复制成功</span></p>
+		<p class="other">32位完整MD5码：<span id="code32"></span></p>
+	</div>
+	<h2 id="zc">支持本项目</h2>
+	<div id="zhichi">
+		<p>1.捐赠 donation：</p>
+		<a href="http://kisexu.com/go/huamidonation" id="donation">点击进入捐赠页面</a>
+		<p>2.分享也是力量：</p> 
+		<!-- JiaThis Button BEGIN -->
+		<div id="jiathis_style_32x32">
+			<a class="jiathis_button_qzone"></a>
+			<a class="jiathis_button_tsina"></a>
+			<a class="jiathis_button_tqq"></a>
+			<a class="jiathis_button_renren"></a>
+			<a class="jiathis_button_twitter"></a>
+			<a class="jiathis_button_fb"></a>
+			<a class="jiathis_button_fanfou"></a>
+			<a class="jiathis_button_google"></a>
+			<a class="jiathis_button_kaixin001"></a>
+			<a href="http://www.jiathis.com/share?uid=1531699" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+			<a class="jiathis_counter_style"></a>
+		</div>
+		<script type="text/javascript">var jiathis_config = {data_track_clickback:true};</script>
+		<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js?uid=1531699" charset="utf-8"></script>
+		<!-- JiaThis Button END -->
+	</div>
+	<p id="footer">thank for <a href="http://jquery.com/">jQuery</a> &bull; <a href="https://github.com/blueimp/jQuery-MD5">blueimp</a> &bull; <a href="http://code.google.com/p/zeroclipboard/">jhuckaby</a> | <a href="http://kisexu.com/blog/huami">项目介绍</a> | code by <a href="http://kisexu.com/">徐小花</a> kisexu(at)gmail.com</p>
+</div>
+<script src="ZeroClipboard.js"></script>
+<script type="text/javascript">
+//ZeroClipboard设置
+var clip = new ZeroClipboard.Client(); // 新建一个对象
+clip.setHandCursor( true ); // 设置鼠标为手型
+clip.setText("哈哈"); // 设置要复制的文本。
+clip.glue("copycode16"); // 和上一句位置不可调换
+</script>
+
+<!-- tong ji ---->
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-3257520-5']);
+  _gaq.push(['_setDomainName', '.kisexu.com']);
+  _gaq.push(['_trackPageview']);
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+<script type="text/javascript">
+var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
+document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F57db85244f4a070aeabe34a1c8e33de0' type='text/javascript'%3E%3C/script%3E"));
+</script>
+</body>
+</html>
