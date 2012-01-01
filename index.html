@@ -70,11 +70,12 @@ $(function(){//页面载入后执行的内容
 </head>
 <body>
 <div id="header">
-<h1>花密 Flower Password<span> --- 可记忆的密码管理方案</span></h1>
+  <h1>花密 Flower Password<span> --- 可记忆的密码管理方案</span></h1>
 </div>
 <div id="main">
+	<p>Clone from <a href="http://kisexu.com/huami/">http://kisexu.com/huami/</a></p>
 	<p>“花密”旨在提供一个可记忆、非储存的密码管理方案。使用一个记忆密码和各账号的区分代号通过基于HMAC-MD5的自定义算法为不同账号分别生成一个不同的强壮密码。 <a href="http://kisexu.com/blog/huami">>>介绍说明</a></p>
-	<p>“花密”其他版本：<a href="http://userscripts.org/scripts/show/121401" target="_blank">Greasemonkey脚本版</a>（推荐）| <a title="花密更新离线版本和自建的在线版" href="http://kisexu.com/blog/18" target="_blank">离线HTML版</a> | <a href="http://flower-password.googlecode.com/files/F.P.win%20v1.0.zip" target="_blank">桌面exe版</a> | <a title="花密推出chrome插件" href="http://kisexu.com/blog/20" target="_blank">chrome插件版</a></p>
+	<p>“花密”其他版本：<a href="http://userscripts.org/scripts/show/121401" target="_blank">Greasemonkey脚本版</a> | <a title="花密更新离线版本和自建的在线版" href="http://flower-password.googlecode.com/files/F.P.offline%20v1.0.zip" target="_blank">离线HTML版</a> | <a title="命令行版本" href="https://github.com/ninehills/huami-cli">CLI版</a> | <a href="http://flower-password.googlecode.com/files/F.P.win%20v1.0.zip" target="_blank">桌面exe版</a> | <a title="花密推出chrome插件" href="http://code.google.com/p/flower-password-chrome/" target="_blank">chrome插件版</a></p>
 	<h2><span>1</span>输入</h2>
 	<div id="input">
 		<label for="password">记忆密码</label><input id="password" name="password" type="password" value="" tabindex="1" maxlength="20" />
@@ -89,26 +90,8 @@ $(function(){//页面载入后执行的内容
 	</div>
 	<h2 id="zc">支持本项目</h2>
 	<div id="zhichi">
-		<p>1.捐赠 donation：</p>
+		<p>捐赠 donation：</p>
 		<a href="http://kisexu.com/go/huamidonation" id="donation">点击进入捐赠页面</a>
-		<p>2.分享也是力量：</p> 
-		<!-- JiaThis Button BEGIN -->
-		<div id="jiathis_style_32x32">
-			<a class="jiathis_button_qzone"></a>
-			<a class="jiathis_button_tsina"></a>
-			<a class="jiathis_button_tqq"></a>
-			<a class="jiathis_button_renren"></a>
-			<a class="jiathis_button_twitter"></a>
-			<a class="jiathis_button_fb"></a>
-			<a class="jiathis_button_fanfou"></a>
-			<a class="jiathis_button_google"></a>
-			<a class="jiathis_button_kaixin001"></a>
-			<a href="http://www.jiathis.com/share?uid=1531699" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
-			<a class="jiathis_counter_style"></a>
-		</div>
-		<script type="text/javascript">var jiathis_config = {data_track_clickback:true};</script>
-		<script type="text/javascript" src="http://v2.jiathis.com/code/jia.js?uid=1531699" charset="utf-8"></script>
-		<!-- JiaThis Button END -->
 	</div>
 	<p id="footer">thank for <a href="http://jquery.com/">jQuery</a> &bull; <a href="https://github.com/blueimp/jQuery-MD5">blueimp</a> &bull; <a href="http://code.google.com/p/zeroclipboard/">jhuckaby</a> | <a href="http://kisexu.com/blog/huami">项目介绍</a> | code by <a href="http://kisexu.com/">徐小花</a> kisexu(at)gmail.com</p>
 </div>
@@ -121,21 +104,5 @@ clip.setText("哈哈"); // 设置要复制的文本。
 clip.glue("copycode16"); // 和上一句位置不可调换
 </script>
 
-<!-- tong ji ---->
-<script type="text/javascript">
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-3257520-5']);
-  _gaq.push(['_setDomainName', '.kisexu.com']);
-  _gaq.push(['_trackPageview']);
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-</script>
-<script type="text/javascript">
-var _bdhmProtocol = (("https:" == document.location.protocol) ? " https://" : " http://");
-document.write(unescape("%3Cscript src='" + _bdhmProtocol + "hm.baidu.com/h.js%3F57db85244f4a070aeabe34a1c8e33de0' type='text/javascript'%3E%3C/script%3E"));
-</script>
 </body>
 </html>
